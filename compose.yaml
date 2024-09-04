@@ -1,0 +1,23 @@
+services:
+  server:
+    env_file: ".env"
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 50051:50051
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

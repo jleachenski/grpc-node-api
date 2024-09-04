@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package book;
+
+service Book {
+    rpc ManipulateBook (ManipulateBookRequest) returns (ManipulateBookReply) {}
+    rpc QueryBook (QueryBookRequest) returns (QueryBookReply) {}
+}
+  
+message ManipulateBookRequest {
+    repeated Resource books = 1;
+}
+
+message ManipulateBookReply {}
+
+message QueryBookRequest {}
+
+message QueryBookReply {
+    repeated Resource books = 1;
+}
+
+message Resource {
+    optional int32 id = 1;
+    string name = 2;
+    int32 pages = 3;
+}
